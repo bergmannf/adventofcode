@@ -1,24 +1,10 @@
-use problem_2::run as run2;
-use problem_3::run as run3;
-use problem_4::run as run4;
-use problem_5::run as run5;
-use problem_6::run as run6;
+use mymacro;
 
-mod problem_2 {
-    pub mod run;
-}
-mod problem_3 {
-    pub mod run;
-}
-mod problem_4 {
-    pub mod run;
-}
-mod problem_5 {
-    pub mod run;
-}
-mod problem_6 {
-    pub mod run;
-}
+mymacro::make_problem_import!(2);
+mymacro::make_problem_import!(3);
+mymacro::make_problem_import!(4);
+mymacro::make_problem_import!(5);
+mymacro::make_problem_import!(6);
 
 fn help(name: String) {
     println!("./{0} <problem_number>", name);
