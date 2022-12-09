@@ -33,7 +33,7 @@ impl Grid {
         let height = self.grid[location.0][location.1];
         let top = (0..location.1).all(|i| self.grid[location.0][i] < height);
         let bottom = (location.1 + 1..self.columns()).all(|i| self.grid[location.0][i] < height);
-        return top || bottom;
+        top || bottom
     }
 
     fn columns_scenic(&self, location: (usize, usize)) -> (usize, usize) {
@@ -52,14 +52,14 @@ impl Grid {
                 break;
             }
         }
-        return (score_top, score_bottom);
+        (score_top, score_bottom)
     }
 
     fn rows_shorter(&self, location: (usize, usize)) -> bool {
         let height = self.grid[location.0][location.1];
         let left = (0..location.0).all(|i| self.grid[i][location.1] < height);
         let right = (location.0 + 1..self.rows()).all(|i| self.grid[i][location.1] < height);
-        return left || right;
+        left || right
     }
 
     fn rows_scenic(&self, location: (usize, usize)) -> (usize, usize) {
@@ -78,13 +78,13 @@ impl Grid {
                 break;
             }
         }
-        return (score_left, score_right);
+        (score_left, score_right)
     }
 
     fn scenic(&self, location: (usize, usize)) -> usize {
         let (top, bottom) = self.columns_scenic(location);
         let (left, right) = self.rows_scenic(location);
-        return top * bottom * left * right;
+        top * bottom * left * right
     }
 
     fn visible(&self, location: (usize, usize)) -> bool {
@@ -95,7 +95,7 @@ impl Grid {
         {
             return true;
         }
-        return self.columns_shorter(location) || self.rows_shorter(location);
+        self.columns_shorter(location) || self.rows_shorter(location)
     }
 }
 
@@ -116,6 +116,7 @@ pub fn run() -> Option<()> {
     let path = "./src/problem_8/input.txt";
     let input = File::open(path).unwrap();
     let grid = parse_grid(BufReader::new(input).lines().flatten().collect());
+    grid.print();
     let mut visible_nodes = 0;
     for i in 0..grid.rows() {
         for j in 0..grid.columns() {

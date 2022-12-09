@@ -7,11 +7,11 @@ struct Stacks {
 impl Display for Stacks {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         for (i, v) in self.values.iter().enumerate() {
-            write!(f, "{0}: ", i);
+            write!(f, "{0}: ", i).unwrap();
             for c in v {
-                write!(f, "{0}", c);
+                write!(f, "{0}", c).unwrap();
             }
-            write!(f, "\n");
+            write!(f, "\n").unwrap();
         }
         Ok(())
     }
@@ -25,9 +25,8 @@ impl Stacks {
         for i in 1..=m.value {
             println!("Move {0}", i);
             let maybe = self.values[from as usize].pop();
-            match maybe {
-                Some(v) => self.values[to as usize].push(v),
-                None => (),
+            if let Some(v) = maybe {
+                self.values[to as usize].push(v);
             }
         }
     }
@@ -39,9 +38,8 @@ impl Stacks {
         for i in 1..=m.value {
             println!("Move {0}", i);
             let maybe = self.values[from as usize].pop();
-            match maybe {
-                Some(v) => temp_vec.push(v),
-                None => (),
+            if let Some(v) = maybe {
+                temp_vec.push(v);
             }
         }
         for _ in 1..=temp_vec.len() {
@@ -120,6 +118,10 @@ fn parse_input(path: String) -> Option<(Stacks, Vec<Move>)> {
 }
 
 pub fn run() -> Option<()> {
+    let (mut state, moves) = parse_input("./src/problem_5/input.txt".to_string())?;
+    for m in moves {
+        state.do_move(m);
+    }
     let (mut state, moves) = parse_input("./src/problem_5/input.txt".to_string())?;
     for m in moves {
         state.do_move_multi(m);
