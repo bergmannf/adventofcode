@@ -8,29 +8,30 @@ mymacro::make_problem_import!(6);
 mymacro::make_problem_import!(7);
 mymacro::make_problem_import!(8);
 mymacro::make_problem_import!(9);
+mymacro::make_problem_import!(10);
 
 fn help(name: String) {
     println!("./{0} <problem_number>", name);
 }
 
 fn main() {
-    run9::run();
     let program = std::env::args()
         .next()
         .expect("No program name passed - this is strange.");
-    let problem = std::env::args()
-        .nth(1)
-        .expect("No problem number was given");
-    match problem.as_str() {
-        "2" => run2::run(),
-        "3" => run3::run(),
-        "4" => run4::run(),
-        "5" => run5::run(),
-        "6" => run6::run(),
-        "7" => run7::run(),
-        "8" => run8::run(),
-        "9" => run9::run(),
-        _ => {
+    let problem = std::env::args().nth(1);
+    match problem.as_deref() {
+        Some("2") => run2::run(),
+        Some("3") => run3::run(),
+        Some("4") => run4::run(),
+        Some("5") => run5::run(),
+        Some("6") => run6::run(),
+        Some("7") => run7::run(),
+        Some("8") => run8::run(),
+        Some("9") => run9::run(),
+        Some("10") => run10::run(),
+        Some(&_) => None,
+        None => {
+            run10::run();
             help(program);
             None
         }
