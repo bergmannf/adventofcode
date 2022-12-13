@@ -9,6 +9,15 @@ mymacro::make_problem_import!(7);
 mymacro::make_problem_import!(8);
 mymacro::make_problem_import!(9);
 mymacro::make_problem_import!(10);
+mymacro::make_problem_import!(11);
+
+pub trait Problem {
+    fn load(&self) -> String;
+
+    fn solve_part1(&self);
+
+    fn solve_part2(&self);
+}
 
 fn help(name: String) {
     println!("./{0} <problem_number>", name);
@@ -29,9 +38,10 @@ fn main() {
         Some("8") => run8::run(),
         Some("9") => run9::run(),
         Some("10") => run10::run(),
+        Some("11") => run11::run(),
         Some(&_) => None,
         None => {
-            run10::run();
+            run11::run();
             help(program);
             None
         }
