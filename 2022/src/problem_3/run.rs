@@ -82,23 +82,22 @@ fn find_group(teams: &[Backpack]) -> Option<char> {
     None
 }
 
-pub fn run() -> Option<()> {
+pub fn run() {
     let priorities = create_priorities();
-    let backpacks = read_input("./src/problem_3/input.txt".to_string())?;
+    let backpacks = read_input("./src/problem_3/input.txt".to_string()).unwrap();
     let teams = backpacks.clone();
     let mut sum = 0;
     for bp in backpacks {
-        let equal = bp.find_equal()?;
+        let equal = bp.find_equal().unwrap();
         let value = priorities[&equal];
         sum += value;
     }
     let mut sum_groups = 0;
     for team in teams.chunks(3) {
-        let group = find_group(team)?;
+        let group = find_group(team).unwrap();
         let value = priorities[&group];
         sum_groups += value;
     }
     println!("Total value of duplicates {0}", sum);
     println!("Total value of groups {0}", sum_groups);
-    None
 }

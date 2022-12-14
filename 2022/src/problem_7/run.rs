@@ -95,7 +95,7 @@ fn parse_lines(lines: Vec<String>) -> Tree {
     tree
 }
 
-pub fn run() -> Option<()> {
+pub fn run() {
     let path = "./src/problem_7/input.txt";
     let input = File::open(path).unwrap();
     let lines = BufReader::new(input).lines().flatten().collect();
@@ -114,5 +114,4 @@ pub fn run() -> Option<()> {
     children.sort_by(|a, b| a.size.cmp(&b.size));
     let smallest = children.iter().find(|t| t.size >= required).unwrap();
     println!("Smallest directory to delete: {:?}", smallest);
-    None
 }

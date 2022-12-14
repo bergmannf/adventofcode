@@ -30,7 +30,7 @@ fn problem_one(mut monkeys: Vec<Monkey>, iterations: usize, divisor: impl Fn(u12
     println!("Monkey business: {0}", monkey_business);
 }
 
-pub fn run() -> Option<()> {
+pub fn run() {
     let monkeys = vec![
         Monkey {
             inspections: 0,
@@ -87,5 +87,4 @@ pub fn run() -> Option<()> {
     let lcm = divisors.iter().product::<u128>();
     let f = |x| x % lcm;
     problem_one(m2, 10000, f);
-    None
 }

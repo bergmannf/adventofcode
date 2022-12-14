@@ -113,14 +113,13 @@ fn problem(moves: &Vec<(Move, usize)>, knots: usize) {
     println!("Visited {0} locations", number_visited);
 }
 
-pub fn run() -> Option<()> {
+pub fn run() {
     let path = "./src/problem_9/input.txt".to_string();
     let f = File::open(path).unwrap();
     let lines = BufReader::new(f).lines();
     let moves = parse_lines(lines.flatten().collect());
     problem(&moves, 2);
     problem(&moves, 10);
-    None
 }
 
 #[test]

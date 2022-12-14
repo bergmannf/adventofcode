@@ -117,12 +117,12 @@ fn parse_input(path: String) -> Option<(Stacks, Vec<Move>)> {
     Some((stacks, moves))
 }
 
-pub fn run() -> Option<()> {
-    let (mut state, moves) = parse_input("./src/problem_5/input.txt".to_string())?;
+pub fn run() {
+    let (mut state, moves) = parse_input("./src/problem_5/input.txt".to_string()).unwrap();
     for m in moves {
         state.do_move(m);
     }
-    let (mut state, moves) = parse_input("./src/problem_5/input.txt".to_string())?;
+    let (mut state, moves) = parse_input("./src/problem_5/input.txt".to_string()).unwrap();
     for m in moves {
         state.do_move_multi(m);
     }
@@ -133,5 +133,4 @@ pub fn run() -> Option<()> {
             None => println!("{0} is empty", i),
         }
     }
-    None
 }

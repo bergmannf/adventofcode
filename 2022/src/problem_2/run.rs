@@ -84,7 +84,7 @@ where
     Ok(io::BufReader::new(file).lines())
 }
 
-pub fn run() -> Option<()> {
+pub fn run() {
     let root = match env::current_dir() {
         Ok(d) => d,
         Err(_) => panic!("Could not get current directory"),
@@ -105,5 +105,4 @@ pub fn run() -> Option<()> {
     }
     println!("Sum of rounds (play): {0}", sum_hand);
     println!("Sum of rounds (outcome): {0}", sum_play);
-    None
 }

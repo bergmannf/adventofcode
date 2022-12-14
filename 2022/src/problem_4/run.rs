@@ -103,8 +103,8 @@ fn read_input(path: String) -> Option<Vec<Assignment>> {
     Some(assignments)
 }
 
-pub fn run() -> Option<()> {
-    let assignments = read_input("./src/problem_4/input.txt".to_string())?;
+pub fn run() {
+    let assignments = read_input("./src/problem_4/input.txt".to_string()).unwrap();
     let contained = assignments
         .iter()
         .map(|a| i32::from(a.is_contained()))
@@ -115,5 +115,4 @@ pub fn run() -> Option<()> {
         .map(|a| i32::from(a.overlaps()))
         .sum::<i32>();
     println!("Overlapping assignments: {0}", overlaps);
-    None
 }

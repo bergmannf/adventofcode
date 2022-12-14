@@ -66,12 +66,11 @@ fn problem_b(state: &HashMap<usize, isize>) {
     println!("{0}", crt);
 }
 
-pub fn run() -> Option<()> {
+pub fn run() {
     let path = "./src/problem_10/input.txt";
     let file = File::open(path).unwrap();
     let lines = BufReader::new(file).lines().flatten().collect();
     let state = parse_lines(lines);
     problem_a(&state);
     problem_b(&state);
-    None
 }

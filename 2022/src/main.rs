@@ -39,11 +39,10 @@ fn main() {
         Some("9") => run9::run(),
         Some("10") => run10::run(),
         Some("11") => run11::run(),
-        Some(&_) => None,
+        Some(&_) => {}
         None => {
             run11::run();
             help(program);
-            None
         }
     };
 }

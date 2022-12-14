@@ -112,7 +112,7 @@ fn parse_grid(input: Vec<String>) -> Grid {
     Grid { grid }
 }
 
-pub fn run() -> Option<()> {
+pub fn run() {
     let path = "./src/problem_8/input.txt";
     let input = File::open(path).unwrap();
     let grid = parse_grid(BufReader::new(input).lines().flatten().collect());
@@ -136,7 +136,6 @@ pub fn run() -> Option<()> {
         }
     }
     println!("Best tree around {0}", current_max);
-    None
 }
 
 #[test]

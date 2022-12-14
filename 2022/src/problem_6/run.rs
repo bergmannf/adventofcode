@@ -22,7 +22,7 @@ fn find_unique(s: &String, len: usize) -> Option<usize> {
     None
 }
 
-pub fn run() -> Option<()> {
+pub fn run() {
     let path = "./src/problem_6/input.txt";
     let input = File::open(path).unwrap();
     let lines = BufReader::new(input).lines();
@@ -40,5 +40,4 @@ pub fn run() -> Option<()> {
         Some(i) => println!("First start-of-message at {0}", i),
         None => println!("No first start-of-message."),
     }
-    None
 }
